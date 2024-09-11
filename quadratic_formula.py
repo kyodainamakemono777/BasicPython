@@ -1,5 +1,5 @@
 #二次方程式の解を返す関数
-def 二次方程式(a,b,c,):
+def calc(a,b,c,):
     x=(-b+(((b**2)-4*a*c)**0.5))*(1/(2*a))           #解一つ目をxに代入
     y=(-b-(((b**2)-4*a*c)**0.5))*(1/(2*a))           #解二つ目をyに代入
     return x,y                               
@@ -9,26 +9,27 @@ def 二次方程式(a,b,c,):
 a=1
 b=-6
 c=9
-x1,x2=二次方程式(a,b,c)
+x1,x2=calc(a,b,c)
 print(x1,x2)
 
 #(2)
 a=1
 b=2
 c=-8
-x1,x2=二次方程式(a,b,c)
+x1,x2=calc(a,b,c)
 print(x1,x2)
 
 #(3)
 a=8
 b=-6
 c=-35
-x1,x2=二次方程式(a,b,c)
+x1,x2=calc(a,b,c)
 print(x1,x2)
 
-#(4)
+#(4)修正しました
 a=1
-b=1
-c=0
-x1,x2=二次方程式(a,b,c)
+b=0
+c=1
+x1,x2=calc(a,b,c)
 print(x1,x2)
+
