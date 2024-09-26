@@ -1,25 +1,28 @@
-
-#2～自然数nまで順重に割っていく　　　　　n÷2, n÷3, n÷4, n÷5, n÷6....    n÷n　
-# 1とnだけでしか割り切れないのであれば『素数』　それ以外は『素数じゃない』にしています
-
-
-#素数判定の関数
+#素数判定の関数  
 def is_prime(n):
+    if "." in n:
+        return ("エラー　小数点を含まない数を入力してください")
+    else:
+        n=int(n)
+        if n<1:
+            return ("エラー　０より大きい数を入力してください")
+
     list=[1]
     for i in range(2,n+1):
         if n%i==0:
             list.append(i)
     
-    print("この数は{}で割り切れます".format(list))
-    
     if len(list)==2:
-        print("この数は素数です")
+        return True
     else:
-        print("この数は素数ではありません")
+        return False
 
 
-a = int(input("aの値を入力: "))
-b = int(input("bの値を入力: "))
+a = input("aの値を入力: ")
+result_a=is_prime(a)
+print(result_a)
 
-is_prime(a)
-is_prime(b)
+
+
+#少数点を含む数や、負の数を入力するとエラーのメッセージが出るようにしました。
+#素数であればTrue 素数じゃなければFalse がでます
