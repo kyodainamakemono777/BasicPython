@@ -1,38 +1,33 @@
 from math import sin
 import math 
 
-
-#aとbの値
-a=0
-b=(1/2)*math.pi
-
-
-
-#aからbの区間をn等分してhを求める （台形の高さ）
-n=100
-h=(b-a)/n
-
-
-
-
-#f(a)からf(b)までの100個のsin関数を当てはめた値を求める　　f(0),f(1),f(2),.....f(100) 　そして100個リストに格納しました
-sin_values=[]
-for x in range(n+1):
-    split_point=a+(x*h)
-    sin_values.append(sin(split_point))
+#台形積分の関数
+def trapezoidal (f, a=0, b=1, n=100):
+    h=(b-a)/n
+    values=[]
+    for x in range (n+1):
+        values.append(f(a+(x*h)))
+    
+    area_list=[]
+    for y in range (n):
+        top=values[y]
+        bottom=values[y+1]
+        area_list.append((top+bottom)*h/2)
+    
+    total=sum(area_list)
+    return total
 
 
 
+#(1) 
+print(trapezoidal(f=math.sin, a=0, b=math.pi/2, n=50))
 
-#求めた間数値で小さい台形の面積を100個求める そして面積リストに追加しました（100個分の台形の面積の値が格納されてます）
-area_list=[]
-for i in range(n):
-    top=(sin_values[i])
-    bottom=(sin_values[i+1])
-    area=((top+bottom)*h)/2
-    area_list.append(area)
+#(2)
+def func_A(x):
+    return 4/(1+x**2)
+print(trapezoidal(f=func_A, a=0, b=1 ,n=100))
 
-
-#100個の台形の面積を全部足し合わせる  近似しました！
-total=sum(area_list)
-print(total)
+#(3)
+def func_B(x):
+    return math.sqrt(math.pi)*math.exp(-x**2)
+print(trapezoidal(f=func_B, a=-100, b=100, n=1000))
