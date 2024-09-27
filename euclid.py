@@ -7,17 +7,14 @@ def find_gcd(a,b):
     if r==0:
         return b
     else:
-        while True:
-            a=b
-            b=r
+        while r!=0:
+            a,b=b,r
             r=(a%b)
-            if r==0:
-                return b
-                break
+        return b
 
 
 #上の関数を使用して、お互いが素であるか判定する関数
-def 素を判定 (a,b):
+def is_coprime (a,b):
     return find_gcd(a,b)==1
 
 
@@ -31,6 +28,4 @@ print(result)
 
 
 #お互いが素であるかを確認する 素であればTrue 違うとFalse
-print(素を判定(a,result))
-
-
+print(is_coprime(a,b))
